@@ -16,16 +16,16 @@ namespace RockPaperScissors
             Console.ResetColor();
 
             Console.WriteLine("Please enter 1 or 2 " +
-                "\n 1 for two players " +
-                "\n 2 against a computer player");
+                "\n 1 => for two players " +
+                "\n 2 => against a computer player");
             String gameMode = Console.ReadLine();
           
             while (!gameMode.Equals("1") && !gameMode.Equals("2"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("The value entered is incorrect, please enter " +
-                    "\n 1 for two players and " +
-                    "\n 2 against a computer player");
+                    "\n 1 => for two players " +
+                    "\n 2 => against a computer player");
                 Console.ResetColor();
                 gameMode = Console.ReadLine();
             }
@@ -46,9 +46,9 @@ namespace RockPaperScissors
                 while (player1.Point < 3 && player2.Point < 3)
                 {                
                     Console.WriteLine("{0}: please make your choice " +
-                        "\n 1 for Rock " +
-                        "\n 2 for Paper " +
-                        "\n 3 for Scissors ", player1.Name);
+                        "\n 1 => for Rock " +
+                        "\n 2 => for Paper " +
+                        "\n 3 => for Scissors ", player1.Name);
 
                     bool isNumeric = int.TryParse(Console.ReadLine(), out int choice1);
 
@@ -56,26 +56,26 @@ namespace RockPaperScissors
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("The value entered for {0} is incorrect, please enter " +
-                            "\n 1 for Rock " +
-                            "\n 2 for Paper " +
-                            "\n 3 for Scissors", player1.Name);
+                            "\n 1 => for Rock " +
+                            "\n 2 => for Paper " +
+                            "\n 3 => for Scissors", player1.Name);
                         Console.ResetColor();
                         isNumeric = int.TryParse(Console.ReadLine(), out choice1);
                     }
 
                     Console.WriteLine("{0} : please make your choice " +
-                        "\n 1 for Rock " +
-                        "\n 2 for Paper " +
-                        "\n 3 for Scissors ", player2.Name);
+                        "\n 1 => for Rock " +
+                        "\n 2 => for Paper " +
+                        "\n 3 => for Scissors ", player2.Name);
                     isNumeric = int.TryParse(Console.ReadLine(), out int choice2);
 
                     while (!numChoices.Contains(choice2) || !isNumeric)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("The value entered for {0} is incorrect, please enter " +
-                            "\n 1 for Rock " +
-                            "\n 2 for Paper " +
-                            "\n 3 for Scissors", player2.Name);
+                            "\n 1 => for Rock " +
+                            "\n 2 => for Paper " +
+                            "\n 3 => for Scissors", player2.Name);
                         Console.ResetColor();                      
                         isNumeric = int.TryParse(Console.ReadLine(), out choice2);
                     }
@@ -88,11 +88,11 @@ namespace RockPaperScissors
                     string result = Tools.getResult(choiceEnum1, choiceEnum2);
                     if (result.Equals("win"))
                     {
-                        Console.WriteLine("{0} win", player1.Name);
+                        Console.WriteLine("{0} win this round", player1.Name);
                         player1.Point++;
                     }else if (result.Equals("lose"))
                     {
-                        Console.WriteLine("{0} win", player2.Name);
+                        Console.WriteLine("{0} win this round", player2.Name);
                         player2.Point++;
                     }else
                     {
@@ -132,9 +132,9 @@ namespace RockPaperScissors
                 while (player1.Point < 3 && player2.Point < 3)
                 {
                     Console.WriteLine("{0} : please make your choice " +
-                        "\n 1 for Rock " +
-                        "\n 2 for Paper " +
-                        "\n 3 for Scissors ", player1.Name);
+                        "\n 1 => for Rock " +
+                        "\n 2 => for Paper " +
+                        "\n 3 => for Scissors ", player1.Name);
                     
                     bool isNumeric = int.TryParse(Console.ReadLine(), out int choice1);                    
 
@@ -142,9 +142,9 @@ namespace RockPaperScissors
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("{0 }, The value entered is incorrect, please enter " +
-                            "\n 1 for Rock " +
-                            "\n 2 for Paper " +
-                            "\n 3 for Scissors", player1.Name);
+                            "\n 1 => for Rock " +
+                            "\n 2 => for Paper " +
+                            "\n 3 => for Scissors", player1.Name);
                         Console.ResetColor();
                         isNumeric = int.TryParse(Console.ReadLine(), out choice1);
                     }
@@ -167,12 +167,12 @@ namespace RockPaperScissors
                     string result = Tools.getResult(choiceEnum1, choiceEnum2);
                     if (result.Equals("win"))
                     {
-                        Console.WriteLine("{0} win", player1.Name);
+                        Console.WriteLine("{0} win this round", player1.Name);
                         player1.Point++;
                     }
                     else if (result.Equals("lose"))
                     {
-                        Console.WriteLine("{0} win", player2.Name);
+                        Console.WriteLine("{0} win this round", player2.Name);
                         player2.Point++;
                     }
                     else
