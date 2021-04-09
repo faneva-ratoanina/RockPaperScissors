@@ -1,6 +1,6 @@
 # RockPaperScissors
 
-The main program is in RockPaperScissors/Program.cs
+The main program is in RockPaperScissors/Program.cs.
 
 It's a simple console application, to run the game juste open this solution in Visual Studio and click on Run button in menu bar.
 
