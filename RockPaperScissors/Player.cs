@@ -1,6 +1,13 @@
 ﻿using System;
 namespace RockPaperScissors
 {
+    /**
+     * 
+     * Copyright (c) April 2021 All Rights Reserved
+     * Author : Faneva RATOANINA
+     * Date 08th April 2021
+     * 
+     */
     public class Player
     {
 

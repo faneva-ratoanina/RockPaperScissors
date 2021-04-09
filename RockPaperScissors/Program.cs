@@ -1,25 +1,35 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 
 namespace RockPaperScissors
-{ 
+{
+    /**
+     * 
+     * Copyright (c) April 2021 All Rights Reserved
+     * Author : Faneva RATOANINA
+     * Date 08th April 2021
+     * 
+     */
     class Program
     {
    
 
         static void Main(string[] args)
-        {       
+        {
+            Console.Clear();
             Console.Title = "Rock - Paper - Scissors";
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;            
+            Console.ForegroundColor = ConsoleColor.Magenta;            
             Console.WriteLine("Welcome to Rock / Paper / Scissors application game developed by Faneva RATOANINA");
             
             Console.ResetColor();
 
+            begin:
             Console.WriteLine("Please enter 1 or 2 " +
                 "\n 1 => for two players " +
-                "\n 2 => against a computer player");
-            String gameMode = Console.ReadLine();
-          
+                "\n 2 => against a computer player ");
+            String gameMode = Console.ReadLine();            
+
             while (!gameMode.Equals("1") && !gameMode.Equals("2"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -28,18 +38,16 @@ namespace RockPaperScissors
                     "\n 2 => against a computer player");
                 Console.ResetColor();
                 gameMode = Console.ReadLine();
-            }
-
-            Random rand = new Random();
+            }            
 
             int[] numChoices = { 1, 2, 3 };
             int numRound = 1;
 
             if (gameMode.Equals("1")) // Two players
             {
-                Console.WriteLine("Player 1 : please enter your name ");       
+                Console.WriteLine("Player 1 : please type your name ");       
                 Player player1 = new Player(Console.ReadLine());
-                Console.WriteLine("Player 2 : please enter your name ");
+                Console.WriteLine("Player 2 : please type your name ");
                 Player player2 = new Player(Console.ReadLine());
 
             play_MODE_1:
@@ -55,7 +63,7 @@ namespace RockPaperScissors
                     while (!numChoices.Contains(choice1) || !isNumeric)                    
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("The value entered for {0} is incorrect, please enter " +
+                        Console.WriteLine("The value entered for {0} is incorrect, please type " +
                             "\n 1 => for Rock " +
                             "\n 2 => for Paper " +
                             "\n 3 => for Scissors", player1.Name);
@@ -72,7 +80,7 @@ namespace RockPaperScissors
                     while (!numChoices.Contains(choice2) || !isNumeric)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("The value entered for {0} is incorrect, please enter " +
+                        Console.WriteLine("The value entered for {0} is incorrect, please type " +
                             "\n 1 => for Rock " +
                             "\n 2 => for Paper " +
                             "\n 3 => for Scissors", player2.Name);
@@ -96,7 +104,7 @@ namespace RockPaperScissors
                         player2.Point++;
                     }else
                     {
-                        Console.WriteLine("It's a tie, this round will restart");                        
+                        Console.WriteLine("It's a tie, this round will be restarted");                        
                         goto play_MODE_1;                        
                     }
                     Console.ForegroundColor = ConsoleColor.Cyan;
@@ -109,19 +117,20 @@ namespace RockPaperScissors
                 if(player1.Point >= 3)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Congratulations {0}, you are the winner !!!", player1.Name);
+                    Console.WriteLine("Congratulations {0}, you are the WINNER !!!", player1.Name);
                     Console.ResetColor();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Congratulations {0}, you are the winner !!!", player2.Name);
+                    Console.WriteLine("Congratulations {0}, you are the WINNER !!!", player2.Name);
                     Console.ResetColor();
                 }
+                
             }
             else // Against computer player
             {
-                Console.WriteLine("Player 1 : please enter your name ");
+                Console.WriteLine("Player 1 : please type your name ");
                 Player player1 = new Player(Console.ReadLine());
 
                 Player player2 = new Player("ComputerBot");
@@ -129,6 +138,9 @@ namespace RockPaperScissors
                 Choice choiceEnum2 = Choice.Rock;
 
             play_MODE_2:
+
+                Random rand = new Random();
+
                 while (player1.Point < 3 && player2.Point < 3)
                 {
                     Console.WriteLine("{0} : please make your choice " +
@@ -141,7 +153,7 @@ namespace RockPaperScissors
                     while (!numChoices.Contains(choice1) || !isNumeric)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("{0 }, The value entered is incorrect, please enter " +
+                        Console.WriteLine("{0 }, The value entered is incorrect, please type " +
                             "\n 1 => for Rock " +
                             "\n 2 => for Paper " +
                             "\n 3 => for Scissors", player1.Name);
@@ -177,7 +189,7 @@ namespace RockPaperScissors
                     }
                     else
                     {
-                        Console.WriteLine("It's a tie, this round will restart");
+                        Console.WriteLine("It's a tie, this round will be restarted");
                         goto play_MODE_2;
                     }
                     Console.ForegroundColor = ConsoleColor.Cyan;              
@@ -190,7 +202,7 @@ namespace RockPaperScissors
                 if (player1.Point >= 3)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Congratulations {0}, you are the winner !!!", player1.Name);
+                    Console.WriteLine("Congratulations {0}, you are the WINNER !!!", player1.Name);
                     Console.ResetColor();
                 }
                 else
@@ -200,8 +212,17 @@ namespace RockPaperScissors
                     Console.ResetColor();
                 }
             }
-            
+
+            /** Check if the gamer will replay or exit the game */
+            if (Tools.checkReplay())
+            {
+                goto begin;
+            }
+            else
+            {
+                Tools.exit();
+            }
         }
-              
+
     }
 }

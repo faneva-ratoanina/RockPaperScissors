@@ -1,6 +1,15 @@
 ﻿using System;
+using System.Threading;
+
 namespace RockPaperScissors
 {
+    /**
+     * 
+     * Copyright (c) April 2021 All Rights Reserved
+     * Author : Faneva RATOANINA
+     * Date 08th April 2021
+     * 
+     */
     public static class Tools
     {
         public static String getResult(Choice choice1, Choice choice2)
@@ -57,6 +66,35 @@ namespace RockPaperScissors
             {
                 return Choice.Rock;
             }
+        }
+
+        public static Boolean checkReplay()
+        {
+            Console.WriteLine("Do you want to play again ? " +
+                    "\n Y => for yes " +
+                    "\n N => No to quit the game");
+            String confirm = Console.ReadLine();
+            while (!String.Equals(confirm, "Y", StringComparison.CurrentCultureIgnoreCase)
+                && !String.Equals(confirm, "N", StringComparison.CurrentCultureIgnoreCase))
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("The value you entered is incorrect, Do you want to play again ? " +
+                "\n Y => for yes " +
+                "\n N => No to quit the game");
+                Console.ResetColor();
+                confirm = Console.ReadLine();
+            }
+
+            return (String.Equals(confirm, "Y", StringComparison.CurrentCultureIgnoreCase));        
+        }
+
+        public static void exit()
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Thank you for your participation, Good bye !!!");
+            Console.ResetColor();
+            Thread.Sleep(3000);
+            Environment.Exit(0);
         }
 
     }
