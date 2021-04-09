@@ -92,7 +92,9 @@ namespace RockPaperScissors
                     Choice choiceEnum2 = (Choice)choice2 - 1;
                     player1.Choice = choiceEnum1;
                     player2.Choice = choiceEnum2;
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("{0} => {1}, {2} => {3}", player1.Name, choiceEnum1, player2.Name, choiceEnum2);
+                    Console.ResetColor();
                     string result = Tools.getResult(choiceEnum1, choiceEnum2);
                     if (result.Equals("win"))
                     {
@@ -175,7 +177,9 @@ namespace RockPaperScissors
                     choiceEnum2 = (Choice)choice2;
                     player1.Choice = choiceEnum1;
                     player2.Choice = choiceEnum2;
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("{0} => {1}, {2} => {3}", player1.Name, choiceEnum1, player2.Name, choiceEnum2);
+                    Console.ResetColor();
                     string result = Tools.getResult(choiceEnum1, choiceEnum2);
                     if (result.Equals("win"))
                     {
